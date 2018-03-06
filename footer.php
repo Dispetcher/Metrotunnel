@@ -24,7 +24,7 @@
                             </div>
                             <p class="copy">© <?php if(407==$post->ID):?>© All rights reserved.<?php else:?>Все права защищены.<?php endif;?> <?php echo date('Y')?>.</p>
                             
-					<!-- IP logger-->
+<!-------------          IP logger          ------------>
 							<div style="width:80px; height:40px; display:none;">
 								<img src="https://iplogger.com/Zzdz3" alt="iplogger.ru - IP Logging Service" border="0">
 							</div>
