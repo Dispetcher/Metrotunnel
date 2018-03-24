@@ -1,0 +1,348 @@
+/* ==========================================================================
+   Mixins
+   ========================================================================== */
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+html {
+  font-size: 14px; }
+
+body {
+  overflow-y: scroll; }
+
+.sro-list-wrapper {
+  overflow-x: auto; }
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+.memberlist,
+.memberdetails {
+  text-align: left;
+  width: 100%;
+  border-collapse: collapse;
+  font-family:Arial;
+}
+  @media (max-width: 991px) {
+    .memberlist,
+    .memberdetails {
+         font-size: 12pt; }
+}
+@media (max-width: 600px) {
+    .memberlist,
+    .memberdetails {
+         font-size: 10pt; }
+}
+@media (max-width: 415px) {
+    .memberlist,
+    .memberdetails {
+         font-size: 9pt;
+    }
+}
+@media (max-width: 325px) {
+    .memberlist,
+    .memberdetails {
+         font-size: 8.5pt;
+    }
+    .modal-content{
+         padding: 0.7em 0.5em 1.8em;
+    }
+}
+
+.memberlist {
+  /**
+     * Sorting
+     */
+  /**
+     * Filters
+     */ }
+  .memberlist td, .memberlist th {
+    padding: 0.3em 2em; }
+    .memberlist td:first-child + td, .memberlist th:first-child + td {
+      text-align: left; }
+    @media (max-width: 991px) {
+      .memberlist td, .memberlist th {
+        padding: 0.3em 0.5em; } }
+  .memberlist .filters th, .memberlist .sorting th {
+    min-width: 10em;
+    white-space: nowrap;
+    padding: 0.7em 2em;
+    border-bottom: 1px solid #ddd; }
+    @media (max-width: 991px) {
+      .memberlist .filters th, .memberlist .sorting th {
+        min-width: auto;
+        padding: 0.7em 0.5em; } }
+  @media (max-width: 991px) {
+    .memberlist .sorting th {
+      white-space: pre-line;
+      padding-right: 18px; } }
+  .memberlist .sorting .asc:after {
+    border-top-color: #555; }
+  .memberlist .sorting .desc:after {
+    -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+    border-top-color: #555;
+    margin-top: -5px; }
+  .memberlist .sorting a {
+    color: #333;
+    position: relative;
+    text-decoration: none;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s; }
+    .memberlist .sorting a:hover {
+      color: #262626; }
+    .memberlist .sorting a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      margin-left: 8px;
+      border: 5px solid transparent;
+      border-top: 7px solid #aaa;
+      vertical-align: middle;
+      -webkit-transition: all 0.2s;
+      -o-transition: all 0.2s;
+      transition: all 0.2s;
+      top: 40%; }
+  .memberlist .filters input, .memberlist .filters select {
+    height: 2em;
+    width: 100%;
+    border-radius: 2px;
+    border: 1px solid #999;
+    background: transparent;
+    padding: 0.2em;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+    outline-color: transparent;
+    font-size: 14px; }
+    .memberlist .filters input:focus, .memberlist .filters select:focus {
+      outline-color: #333;
+      border-color: #bbb; }
+  .memberlist .member-row {
+    cursor: pointer;
+    border-top: 1px solid #e1e1e1;
+    -webkit-transition: background 0.2s;
+    -o-transition: background 0.2s;
+    transition: background 0.2s; }
+    .memberlist .member-row td {
+      padding: 0.7em 2em; }
+      @media (max-width: 991px) {
+        .memberlist .member-row td {
+          padding: 0.7em 0.5em; } }
+    .memberlist .member-row:nth-child(2n+1) {
+      background: #fafafa; }
+    .memberlist .member-row:hover {
+      background: #f1f1f1; }
+
+.memberdetails-wrapper .company-name {
+     font-family:Arial;
+     font-size: 14pt;
+     margin-bottom: 15px;
+     text-align:center;  
+     font-weight:600;
+ }
+
+.memberdetails {
+  table-layout: fixed;
+  margin-bottom: 1.7em;
+ }
+  .memberdetails th {
+    font-weight: bold;
+    padding: 2em 0 1em;
+    line-height: 17px;
+ }
+  .memberdetails tr:first-child th {
+    padding-top: 10px;
+ }
+  .memberdetails td {
+    border: 2px solid #fff;
+    padding: 0.4em;
+    text-align:center;
+ }
+    .memberdetails td[colspan] {
+      padding: 1em;
+ }
+  .memberdetails ul {
+    display: none;
+ }
+  .memberdetails li {
+    list-style-type: none;
+ }
+  .memberdetails .work-title {
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+ }
+    .memberdetails .work-title.is-open {
+      margin-bottom: 0.5em;
+      color: #555;
+ }
+    .memberdetails .work-title:hover {
+      color: #555;
+ }
+
+/* ==========================================================================
+   Modal Windows
+   ========================================================================== */
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 110;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  overflow: hidden;
+  display: none; }
+
+.modal {
+  position: relative;
+  width: 60%;
+  margin: 2em auto;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  z-index: 20;
+  margin:0 25vw;
+ }
+  @media (max-width: 1199px) {
+    .modal {
+      margin:0 15vw;
+      width:70%;
+    } 
+  }
+@media (max-width: 1024px) {
+    .modal {
+      margin:0 10vw;
+      width:80%;
+    } 
+  }
+@media (max-width: 860px) {
+    .modal {
+      margin:0 5vw 0 1vw;
+      width:98%;
+    } 
+  }
+
+.on-modal-open .modal-wrapper {
+  overflow-y: auto; }
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  background-color: #000;
+  opacity: 0.5; }
+
+.modal-content {
+  padding: 0.7em 1.1em 1.8em; }
+
+.modal-close {
+  float: right;
+  padding: 0.3em 0.6em;
+  font-size: 1.4em;
+  color: #555;
+  cursor: pointer; }
+
+body.on-modal-open {
+  overflow: hidden;
+  padding-right: 15px;
+  -webkit-transition: none;
+  -o-transition: none;
+  transition: none; }
+
+body.on-modal-close {
+  -webkit-transition: none;
+  -o-transition: none;
+  transition: none;
+  overflow-y: scroll; }
+
+/* ==========================================================================
+   Pagination
+   ========================================================================== */
+.pagination {
+  margin-top: 1.5em; }
+  .pagination:before, .pagination:after {
+    content: " ";
+    display: table; }
+  .pagination:after {
+    clear: both; }
+
+.pagination .disabled,
+.pagination .active {
+  pointer-events: none;
+  cursor: default; }
+
+.pagination .active {
+  color: #888;
+  background: #f1f1f1; }
+
+.pagination .disabled {
+  color: #bbb; }
+
+.pagination a {
+  font-size: 12px;
+  border: 1px solid #aaa;
+  border-left: none;
+  color: #333;
+  padding: 0.7em 1em;
+  float: left;
+  text-align: center;
+  text-decoration: none; }
+  .pagination a:first-child {
+    border-left: 1px solid #aaa;
+    border-radius: 2px 0 0 2px; }
+  .pagination a:last-child {
+    border-radius: 0 2px 2px 0; }
+  .pagination a:hover {
+    color: #333;
+    background: #f1f1f1;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s; }
+
+/* ==========================================================================
+   Custom User Styles
+   ========================================================================== */
+.memberlist th, .memberlist td {
+  border-right: 1px solid #fff; }
+  .memberlist th:last-child, .memberlist td:last-child {
+    border-right: none; }
+
+.memberlist .sorting a {
+  border-bottom: none; }
+
+.memberlist .member-row {
+  background: #e3eaed;
+  border-top: 1px solid #fff; }
+  .memberlist .member-row:nth-child(2n+1) {
+    background: #dde5ea; }
+    .memberlist .member-row:nth-child(2n+1):hover {
+      background: #dde5ea; }
+  .memberlist .member-row:hover {
+    background: #e3eaed; }
+
+.memberlist_theme_metrotunnel .sorting th {
+  background: #83e2c2; }
+
+.memberlist_theme_proekttunnel .sorting th {
+  background: #a2d4ee; }
+
+/******** Custom style *********/
+
+.memberdetails tbody tr:nth-child(odd){
+ 	background-color: #5fb1a1;
+ }
