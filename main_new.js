@@ -311,5 +311,48 @@
 						$.cookie('pdataread', '1', {expires : 30});
 					});
 			};
-});	
+		//Reestr corrections
+		$('.member-row').on('click', function(){
+			if($(window).innerWidth() < 1024){
+				$(window).scrollTop(395);
+			}else{
+				$(window).scrollTop(360);
+			}
+			setTimeout(correct, 500);
+			setTimeout(function(){
+				while($('.memberdetails tbody tr td').eq(4).css('background-color') != 'rgb(131, 226, 194)'){
+					setTimeout(correct, 500);
+				}	
+			}, 800);
+		});
+ 			
+		function correct(){
+			var tab_head = $('.memberdetails tbody tr td b');
+			var ch;
+			for(let i=0; i<tab_head.length; i++){
+				if(tab_head.eq(i).text() == "Факты применения мер дисциплинарного воздействия"){
+					ch = 1;
+				}else{
+					ch = 0;
+				}
+			}
+			if(ch == 0){
+				var tabrow = $('.memberdetails tbody');
+				var ins_el = '<tr><td colspan="2" align="center"><b>Факты применения мер дисциплинарного воздействия</b></td></tr>';
+				$(ins_el).appendTo(tabrow);
+				tabrow = $('.memberdetails tbody');
+				ins_el = '<tr><td>-</td><td>-</td></tr>';
+				$(ins_el).appendTo(tabrow);
+			}
+			let tab_row = $('.memberdetails tbody tr td');
+				for(let i=0; i<tab_row.length; i++){	
+					if(tab_row.eq(i).text() == "Наименование страховой компании"){
+						var str_row = tab_row.eq(i).next().text().replace('-Не определено-', '');
+						tab_row.eq(i).next().html(str_row);
+					}
+				}					
+			tab_head = $('.memberdetails tbody tr td b');
+				tab_head.parent().css('background-color', '#83e2c2');
+		};
+	});	
 })(jQuery)
