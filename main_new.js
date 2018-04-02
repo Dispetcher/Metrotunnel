@@ -312,6 +312,11 @@
 					});
 			};
 		//Reestr corrections
+		setTimeout(correct, 800);
+		/* For slow internet connection */
+		setTimeout(correct, 1200);
+		setTimeout(correct, 3500);
+		
 		$('.member-row').on('click', function(){
 			if($(window).innerWidth() < 1024){
 				$(window).scrollTop(395);
@@ -322,10 +327,7 @@
 			setTimeout(correct, 800);
 			/* For slow internet connection */
 			setTimeout(correct, 1200);
-			if($('.memberdetails tbody tr td').eq(4).css('background-color') != 'rgb(131, 226, 194)'){
-			   	setTimeout(correct, 2000);
-				setTimeout(correct, 3500);
-			   }			
+			setTimeout(correct, 3500);
 		});
  			
 		function correct(){
@@ -352,9 +354,7 @@
 						var str_row = tab_row.eq(i).next().text().replace('-Не определено-', '');
 						tab_row.eq(i).next().html(str_row);
 					}
-				}					
-			tab_head = $('.memberdetails tbody tr td b');
-				tab_head.parent().css('background-color', '#83e2c2');
+				}	
 		};
 	});	
 })(jQuery)
