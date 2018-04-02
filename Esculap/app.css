@@ -177,6 +177,7 @@ body {
  }
     .memberdetails td[colspan] {
       padding: 1em;
+      background-color: #83e2c2;
  }
   .memberdetails ul {
     display: none;
