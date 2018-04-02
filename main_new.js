@@ -319,11 +319,13 @@
 				$(window).scrollTop(360);
 			}
 			setTimeout(correct, 500);
-			setTimeout(function(){
-				while($('.memberdetails tbody tr td').eq(4).css('background-color') != 'rgb(131, 226, 194)'){
-					setTimeout(correct, 500);
-				}	
-			}, 800);
+			setTimeout(correct, 800);
+			/* For slow internet connection */
+			setTimeout(correct, 1200);
+			if($('.memberdetails tbody tr td').eq(4).css('background-color') != 'rgb(131, 226, 194)'){
+			   	setTimeout(correct, 2000);
+				setTimeout(correct, 3500);
+			   }			
 		});
  			
 		function correct(){
