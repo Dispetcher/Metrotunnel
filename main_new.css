@@ -1919,10 +1919,10 @@ table.decor th {
     border-bottom: 10px solid #fff;
 }
 table.decor tr:nth-child(2n) {
-    background: #e2eaed;
+    background: #f2f2f3;
 }
 table.decor tr:nth-child(2n+1) {
-    background: #dbe5e9;
+	    background: #dbe5e9;
 }
 .table_wrapper {
     width: 100%;
@@ -2026,6 +2026,7 @@ input:checked + .pseudo_checkbox {
 .page_content_orgnumbers{
 	margin-top:-10px;
 	margin-bottom:20px;
+	text-align:left;
 }
 .cat_block_content_wrap {
 	border-top: 1px dotted #9da8aa;

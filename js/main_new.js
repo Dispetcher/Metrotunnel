@@ -312,9 +312,11 @@
 					});
 			};
 		//Reestr corrections
-		setTimeout(correct, 800);
+		//setTimeout(correct, 800);
+		
 		/* For slow internet connection */
-		setTimeout(correct, 1200);
+		
+		/*setTimeout(correct, 1200);
 		setTimeout(correct, 3500);
 		
 		$('.member-row').on('click', function(){
@@ -324,9 +326,10 @@
 				$(window).scrollTop(360);
 			}
 			setTimeout(correct, 500);
-			setTimeout(correct, 800);
+			setTimeout(correct, 800);*/
+		
 			/* For slow internet connection */
-			setTimeout(correct, 1200);
+		/*	setTimeout(correct, 1200);
 			setTimeout(correct, 3500);
 		});
  			
@@ -355,6 +358,6 @@
 						tab_row.eq(i).next().html(str_row);
 					}
 				}	
-		};
+		};*/
 	});	
 })(jQuery)
