@@ -314,7 +314,7 @@
         //Juristic support
             $('.jur_answer').css('display', 'none');
             hide_answ = function(m, n){
-                for(var j=m; j<n+3; j++){
+                for(var j=m; j<m+3; j++){
                     $('.jur_answer').eq(j).fadeToggle(400);                 
                 }
                 $('.jur_img').eq(n).toggleClass('img_active');
