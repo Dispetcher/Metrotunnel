@@ -2186,7 +2186,7 @@ input:checked + .pseudo_checkbox {
 .see_answer{
     padding:10px 15px;
     border-right: 1px solid grey;
-    width: 200px;
+    width: 180px;
     vertical-align: top;
 }
 .answer_txt{
@@ -2196,7 +2196,6 @@ input:checked + .pseudo_checkbox {
     margin-right: 10px;
 }
 .jur_img{
-    margin-left:15px;
     height:25px;
     cursor:pointer;
     vertical-align: -webkit-baseline-middle;
@@ -2657,14 +2656,55 @@ input:checked + .pseudo_checkbox {
     .error404 h1 .dtc {
         display: block;
     }
+    /******** Juristic support  *****/
+    .jur_questions_block{
+        padding: 5px 10px;
+    }
+    .jur_question{
+        padding: 10px;
+        width: 220px;
+    }
+    .answer_txt{
+        font-size:14px;
+        margin-right: 5px;
+    }
+    .jur_img{
+        height: 20px;
+    }
+    .see_answer{
+        padding: 10px 5px;
+    }
+}
+/**** Iphone X, 8 ****/
+@media(max-width: 380px) {
+    .jur_question{
+        padding: 10px;
+        width: 160px;
+    }
+}
+/**** Samsung S5 ****/
+@media(max-width: 365px) {
+    .jur_img{
+        margin-left: 50px;
+    }
+    .see_answer{
+        text-align: center;
+    }
+    .jur_question{
+        width:220px;
+    }
+}
+/**** Iphone 5S, SE ****/
+@media(max-width: 325px) {
+    .jur_img{
+        margin-left: 38px;
+    }
 }
 @media print,
        (-o-min-device-pixel-ratio: 5/4),
        (-webkit-min-device-pixel-ratio: 1.25),
        (min-resolution: 120dpi) {
-
 }
-
 /* ==========================================================================
    Helper classes
    ========================================================================== */
