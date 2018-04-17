@@ -1,9 +1,6 @@
 <div id="sidebar" class="dtc vat">
 	
 	<?php
-		if ($post_id = 2544){
-			$post_id == 12;
-		}
 		function get_first_level_parent_page_id ($post_id) { //рекурсия, лезет вверх, пока не найдёт родительскую страницу первого уровня
 			$current_page = get_post($post_id); //получили объект записи по id
 			if($current_page->post_parent == 0) {
@@ -12,11 +9,8 @@
 				return get_first_level_parent_page_id($current_page->post_parent);
 			}
 		}
-		if ($post->ID == 2544){
-			$id = 12;
-		}else{
-			$id = $post->ID;
-		}
+
+$id = $post->ID;
 
 		$first_level_parent_page_id = get_first_level_parent_page_id($id); 
 	?>
@@ -75,7 +69,7 @@
 						<?php 
 							if(!empty($grand_child_pages)):
 								foreach($grand_child_pages as $grand_child_page):?>
-									<li class="<?php if($post->ID == $grand_child_page->ID) echo 'current_page_item';?>"><a href="<?php echo get_permalink($grand_child_page->ID)?>"><?php echo $grand_child_page->/*post_title*/ID?></a></li>
+									<li class="<?php if($post->ID == $grand_child_page->ID) echo 'current_page_item';?>"><a href="<?php echo get_permalink($grand_child_page->ID)?>"><?php echo $grand_child_page->post_title?></a></li>
 						<?php 	endforeach;
 							endif;
 						?>
