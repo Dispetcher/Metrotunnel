@@ -52,7 +52,7 @@ get_header();?>
 									while ( have_rows('docs', $pid) ) : the_row();?>
 										<div class="document_block">
 											<p><a href="<?php the_sub_field('file')?>" target="_blank"><?php the_sub_field('title')?></a></p>
-											<?php if(get_sub_field('date')):?><div class="document_date">Дата размещения: <?php the_sub_field('date')?></div><?php endif;?>
+											<?php if(get_sub_field('date')):?><div class="document_date">Дата размещения: <?php the_sub_field('date')?> Дата изменения: <?php the_sub_field('date_modified')?></div><?php endif;?>
 										</div>	
 							<?php	endwhile;
 								endif;
