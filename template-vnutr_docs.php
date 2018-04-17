@@ -52,8 +52,8 @@ get_header();?>
 									while ( have_rows('docs', $pid) ) : the_row();?>
 										<div class="document_block">
 											<p><a href="<?php the_sub_field('file')?>" target="_blank"><?php the_sub_field('title')?></a></p>
-											<?php if(get_sub_field('date')):?><div class="document_date">Дата размещения: <?php the_sub_field('date'); endif; ?> 
-											<?php if(get_sub_field('date_modified')):?> Дата изменения: <?php the_sub_field('date_modified'); endif;?></div>
+											<?php if(get_sub_field('date')):?><span class="document_date">Дата размещения: <?php the_sub_field('date');?></span><?php endif; ?> 
+											<?php if(get_sub_field('date_modified')):?><span class="document_date">Дата изменения: <?php the_sub_field('date_modified');?></span><?php endif;?>
 										</div>	
 							<?php	endwhile;
 								endif;
