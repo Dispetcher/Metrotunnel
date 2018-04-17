@@ -1,4 +1,4 @@
-/* @Dispetcher last mod 27.02*/
+/* @Dispetcher last mod 17.04*/
 
 html {
     color: #222;
@@ -1939,9 +1939,10 @@ table.decor tr:nth-child(2n+1) {
 .document_block p {
     margin: 0;
 }
-.document_block .document_date {
+.document_block .document_date{
     font-size: 10px;
     margin-top: 3px;
+    margin-right: 10px;
 }
 .document_block_icon {
     width: 20px;
