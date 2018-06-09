@@ -52,6 +52,8 @@ $id = $post->ID;
 								$grand_child_pages_ids[] = $grand_child_page->ID;
 							}
 					endforeach;
+				else:
+					$grand_child_pages_ids = array();
 				endif;
 				
 				$razdel_links = array(); //ссылки на разделы внутри страницы
