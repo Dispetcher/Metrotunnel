@@ -1,4 +1,4 @@
-/* @Dispetcher last mod 06.06*/
+/* @Dispetcher last mod 10.07*/
 
 html {
     color: #222;
@@ -428,7 +428,7 @@ form br {
     vertical-align: top;
 }
 .dtc.vab {
-    vertical-align: bottom;
+    vertical-align: middle;
 }
 .mobile_menu_opener {
     position: fixed;
@@ -1409,16 +1409,31 @@ pre {
     width: 290px;
 }
 .footer_phones {
-    width: 310px;
+    width: 220px;
 }
 .footer_contacts {
-    width: auto;
+    width: 340px;
+}
+.dtc.vab.footer_social{
+	vertical-align:top;
+	padding-top:10px;
+}
+.footer_social{
+	width:auto;
+}
+.footer_vk{
+	margin-bottom: 10px;
+}
+.vk_logo{
+	width: 55px;
+	height: 55px;
+	margin: 0;
 }
 .footer_logo_img {
     width: 60px;
 }
 .footer_logo_text {
-    padding-bottom: 10px;
+    padding-top: 10px;
 }
 .footer_logo_text a {
     text-transform: uppercase;
@@ -1456,7 +1471,7 @@ span.label {
     display: block;
 }
 .footer_email {
-    margin: 0;
+    margin: 10px 0 0 0;
 }
 .footer_email a {
     color: #fff;
@@ -1464,7 +1479,7 @@ span.label {
     font-family: 'RobotoBold';
 }
 .footer_address {
-    margin: 40px 0 0 0;
+    margin: 30px 0 0 0;
     font-size: 12px;
     font-family: 'RobotoBold';
     color: #fff;
@@ -2290,7 +2305,16 @@ input:checked + .pseudo_checkbox {
         margin-top: -10px;
     }
 }
-
+@media (max-width: 1200px) {
+	.footer_menu li{
+		margin-right:30px;
+	}
+}
+@media (max-width: 1110px) {
+	.footer_menu li{
+		margin-right:20px;
+	}
+}	
 @media (max-width: 1023px) {
     .center_wrap {
         max-width: 100%;
