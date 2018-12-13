@@ -1,3 +1,4 @@
+/*@Dispetcher last mod 13.12.18 */
 (function ($) {
     $(document).ready(function () {
         //MaskedInput
@@ -8,7 +9,13 @@
 					this.value = this.value.replace(/[^-\.,;":'a-zA-Zа-яА-Я ]/g, '');
 				}
 			});
-			$('.wpcf7-response-output').ajaxComplete(function(){$(this).delay(2000).fadeOut('slow');});
+			//$('.wpcf7-response-output').ajaxComplete(function(){$(this).delay(1000).fadeOut('slow');});
+			$(".wpcf7-response-output").ajaxComplete(function(){
+				$("div.wpcf7-validation-errors").css({
+					"border" : "2px solid red",
+					"color" : "#fff"
+				});
+			});
 		//Show call order menu
 			$(document).on("click", ".call_order_form_opener > span", function(e){
                 $('.call_order_form_holder').stop(true,false).fadeToggle(300);
@@ -17,7 +24,7 @@
 			$(document).on("click", ".close_call_order", function(e){
                 $('.call_order_form_holder').stop(true,false).fadeOut(300);
             });
-		//Personal agree 
+		//Personal agree for order call
 			$(document).on("click", ".agree", function(){
 				$(this).toggleClass('checked');
 				if(!$(this).hasClass('checked')) {
@@ -32,6 +39,77 @@
 					alert("Для отправки запроса необходимо согласиться с правилами обработки персональных данных");
 				}
 			});
+		
+		//Show vypiska order menu
+			$(document).on("click", "#vypiska_button", function(e){
+				$('.background_vypiska').fadeIn(300);
+                $('.vypiska_order_form_holder').stop(true,false).fadeToggle(300);
+				getOrgList();
+				
+            });
+		//Close vypiska order 
+			$(document).on("click", ".close_vypiska_order", function(e){
+                $('.vypiska_order_form_holder').stop(true,false).fadeOut(300);
+				$('.background_vypiska').fadeOut(300);
+            });
+			$(document).on("keyup", function(e){
+				if(e.keyCode == 27){
+					$('.vypiska_order_form_holder').stop(true,false).fadeOut(300);
+					$('.background_vypiska').fadeOut(300);
+				}				
+			});
+		//Personal agree for vypiska
+			$(document).on("click", ".vypiska_agree", function(){
+				$(this).toggleClass('checked');
+				if(!$(this).hasClass('checked')) {
+					$('.vypiska_order_form_holder input[type="submit"]').attr('disabled',true);
+					alert("Для отправки запроса необходимо согласиться с правилами обработки персональных данных");
+				} else {
+					$('.vypiska_order_form_holder input[type="submit"]').removeAttr('disabled');
+				}
+			});
+			$(document).on("mouseover", '.vypiska_order_form_holder input[type="submit"]', function(){
+				if($(this).attr('disabled')) {
+					alert("Для отправки запроса необходимо согласиться с правилами обработки персональных данных");
+				}
+			});
+		//Validate vypiska form
+		 $(document).on("click", "#vypiskaReq", function(e){
+			if($('#companyName').val() == "Наименование организации"){
+				e.preventDefault();
+				e.stopPropagation();
+				$('#companyName').css("color", "red");
+			} 
+		 });
+		$(document).on("change", "#companyName", function(){
+			$("#companyName").removeAttr("style");
+		});
+		$(document).on("keyup", "input", function(e){
+			$("div.wpcf7-validation-errors").fadeOut(200);
+			$(".sotrName span").fadeOut(200);
+			$(".sotrDol span").fadeOut(200);
+			$(".sotrEmail span").fadeOut(200);
+		});
+		//Get companies list
+		function getOrgList(){
+			$.post('https://www.metrotunnel.ru/wp-content/complist/orglist.php', 
+				{
+					"method":"get"
+				},
+				function(data, status){
+					if(status == 'success'){
+						var arr = JSON.parse(data);
+						if (arr){
+							arr.forEach(function(item){
+								$('#companyName').append(`<option value="${item.MEMBERNAME}">${item.MEMBERNAME}</option>`)
+							});
+						}else{
+							console.log("couldn't retrieve data");
+						}	
+					}
+				});
+		}
+		
 		//Mobile menu
             $(document).on("click", ".mobile_menu_opener", function(e){
                 $('.mobile_menu').stop(true,false).slideToggle(300);

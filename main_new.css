@@ -1,4 +1,4 @@
-/* @Dispetcher last mod 10.07*/
+/* @Dispetcher last mod 13.12.18*/
 
 html {
     color: #222;
@@ -307,11 +307,25 @@ img {
 table img {
     max-width: 600px;
 }
+
+/*spisok v statye url:metrotunnel.ru/politika-konfidencialnosti*/
+
+ol{
+	list-style: none;
+	counter-reset: li; 
+}
+
+ol:before{
+	counter-increment: li; 
+	content: counters(li,".") ". ";
+}
+
 ul {
     padding: 0;
     margin: 0;
     list-style: none;
 }
+
 p {
     margin: 0 0 20px 0;
 }
@@ -564,6 +578,16 @@ body.home .header_content_main {
 .over_top_call_order {
 	text-align: right;
 }
+.background_vypiska{
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(255,255,255,0.5);
+	z-index: 5;
+}
 .call_order_form_opener {
 	position: relative;
 }
@@ -579,12 +603,8 @@ body.home .header_content_main {
 	font-family: 'RobotoBold';
 	cursor: pointer;
 }
-.call_order_form_holder {
+.call_order_form_holder, .vypiska_order_form_holder {
 	display: none;
-	width: 320px;
-	position: absolute;
-	top: 100%;
-	right: 0;
 	background: #066152;
 	padding: 20px 18px;
 	box-sizing: border-box;
@@ -592,6 +612,37 @@ body.home .header_content_main {
 	z-index: 1000;
 	text-align: center;
 	line-height: 1.2;
+}
+.button.join_sro, #vypiska_button{
+	display: block;
+	margin: 20px 0;
+	width: 275px;
+}
+#vypiska_button{
+	padding: 0 22px;
+	background-color: #318480;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-bottom: 3px solid #439a9a;
+}
+#vypiska_button:hover{
+	background-color: #38b190;
+	border: rgba(57, 129, 154, 0.6);
+}
+.vypiska_order_form_holder{
+	position: relative;
+	width: 95%;
+	max-width: 380px;
+	top: 20vh;
+	margin: auto;
+	box-shadow: 0 14px 28px rgba(6,97,82,0.4), 0 10px 10px rgba(6,97,82,0.3);
+}
+.call_order_form_holder{
+	position: absolute;
+	width: 320px;
+	top: 100%;
+	right: 0;
 }
 .call_order_form_holder::before {
 	display: block;
@@ -605,13 +656,13 @@ body.home .header_content_main {
 	border-right: 8px solid transparent;
 	z-index: 1000;
 }
-.call_order_form_holder > p:first-child {
+.call_order_form_holder > p:first-child, .vypiska_order_form_holder > p:first-child {
 	font-size: 18px;
 	color: #fefefe;
 	text-transform: uppercase;
 	font-family: "RobotoBold";
 }
-.call_order_form_holder input:not([type="submit"]) {
+.call_order_form_holder input:not([type="submit"]), .vypiska_order_form_holder input:not([type="submit"]), .vypiska_order_form_holder select[name="companyName"] {
 	border: none;
 	height: 40px;
 	font-size: 16px;
@@ -621,7 +672,12 @@ body.home .header_content_main {
 	box-sizing: border-box;
 	color: #333;
 }
-.call_order_form_holder  input[type="submit"] {
+.vypiska_order_form_holder select[name="companyName"]{
+	width: 100%;
+	max-width: 320px; 
+	cursor: pointer;
+}
+.call_order_form_holder input[type="submit"], .vypiska_order_form_holder input[type="submit"] {
 	display: block;
 	width: 100%;
 	text-align: center;
@@ -630,22 +686,26 @@ body.home .header_content_main {
 	border-width: 2px;
 	line-height: 48px;
 }
-.call_order_form_holder ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    #333333;
+.vypiska_order_form_holder input[type="submit"]{
+	max-width: 320px;
+	margin: auto;
 }
-.call_order_form_holder :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    #333333;
-    opacity:  1;
+.call_order_form_holder ::-webkit-input-placeholder, .vypiska_order_form_holder ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #333333;
 }
-.call_order_form_holder ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:    #333333;
-    opacity:  1;
+.call_order_form_holder :-moz-placeholder, .vypiska_order_form_holder :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #333333;
+    opacity: 1;
 }
-.call_order_form_holder :-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color:    #333333;
+.call_order_form_holder ::-moz-placeholder, .vypiska_order_form_holder ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #333333;
+    opacity: 1;
 }
-.call_order_form_holder ::-ms-input-placeholder { /* Microsoft Edge */
-    color:    #333333;
+.call_order_form_holder :-ms-input-placeholder, .vypiska_order_form_holder :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #333333;
+}
+.call_order_form_holder ::-ms-input-placeholder, .vypiska_order_form_holder ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #333333;
 }
 .personal_wrap {
 	color: #fff;
@@ -659,7 +719,7 @@ body.home .header_content_main {
 .personal_wrap .dtc:first-child {
 	width: 40px;
 }
-.personal_wrap .agree {
+.personal_wrap .agree, .personal_wrap .vypiska_agree {
 	display: inline-block;
 	width: 23px;
 	height: 23px;
@@ -667,19 +727,23 @@ body.home .header_content_main {
 	margin-top: 3px;
 	cursor: pointer;
 }
-.personal_wrap .agree.checked {
+.personal_wrap .agree.checked, .personal_wrap .vypiska_agree.checked {
 	background: #fff url("../img/agree_arrow.png") center center no-repeat;
 }
-.call_order_form_holder  .wpcf7-not-valid {
+.call_order_form_holder.wpcf7-not-valid, .vypiska_order_form_holder.wpcf7-not-valid {
 	border: 2px solid #e02a27 !important;
 }
-.call_order_form_holder .wpcf7-not-valid-tip {
+.call_order_form_holder.wpcf7-not-valid-tip, .vypiska_order_form_holder.wpcf7-not-valid-tip {
 	display: none !important;
 }
-.call_order_form_holder form {
+.companyName span, .sotrName span, .sotrDol span, .sotrEmail span {
+    right: 25px;
+    top: 12px;
+}
+.call_order_form_holder form, .vypiska_order_form_holder form {
 	position: relative;
 }
-.call_order_form_holder  .wpcf7-response-output {
+.call_order_form_holder.wpcf7-response-output, .vypiska_order_form_holder.wpcf7-response-output {
 	position: absolute;
 	left: -18px;
 	right: -18px;
@@ -694,22 +758,30 @@ body.home .header_content_main {
 	border: none !important;
 	margin: 0 !important;
 }
-.call_order_form_holder  .wpcf7-validation-errors {
+.call_order_form_holder.wpcf7-validation-errors, .vypiska_order_form_holder.wpcf7-validation-errors {
 	color: #ff3535;
 	background: #00463a;
 	font-family: 'RubikMedium';
 	padding: 17px 58px 0 58px;
 }
-.close_call_order {
+.close_call_order, .close_vypiska_order {
 	display: inline-block;
 	width: 30px;
 	height: 30px;
 	position: absolute;
 	right: 0;
-	bottom: 0;
 	cursor: pointer;
 	text-indent: -9999px;
 	background: url("../img/close_call_order.jpg");
+}
+.close_call_order{
+	bottom: 0;
+}
+.close_vypiska_order{
+	top: 0;
+}
+div.wpcf7-mail-sent-ok{
+	color:#fff;
 }
 #top {
     padding: 35px 0;
@@ -1938,11 +2010,6 @@ table.decor tr:nth-child(2n) {
 table.decor tr:nth-child(2n+1) {
 	    background: #dbe5e9;
 }
-.table_wrapper {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: auto;
-}
 .table-wrapper table {
     display: block;
     overflow-x: auto;
@@ -2542,6 +2609,11 @@ input:checked + .pseudo_checkbox {
 		width: 190px;
 		font-size: 100px;
 	}
+	.table_wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+	}
 }
 @media(max-width: 599px) {
     .logo_img {
@@ -2705,6 +2777,9 @@ input:checked + .pseudo_checkbox {
 		padding: 10px;
 		width: 160px;
 	}
+	.header_link_text{
+		padding-left: 10px;
+	}
 }
 /**** Samsung S5 ****/
 @media(max-width: 365px) {
@@ -2716,6 +2791,9 @@ input:checked + .pseudo_checkbox {
 	}
 	.jur_question{
 		width:220px;
+	}
+	.call_order_form_holder input:not([type="submit"]), .vypiska_order_form_holder input:not([type="submit"]), .vypiska_order_form_holder select[name="companyName"] {
+	font-size: 14px;
 	}
 }
 /**** Iphone 5S, SE ****/
