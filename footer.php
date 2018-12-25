@@ -26,7 +26,7 @@ if($id != 2605){ ?>
                                     <?php if($id == 407):?>
                                         <a href="/">Association of Underground Builders</a>
                                     <?php else:?>
-                                        <a href="/">СРО А «Объединение <br>подземных строителей»</a>
+                                        <a href="/">СРО А «ПОДЗЕМДОРСТРОЙ»</a>
                                     <?php endif;?>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@ if($id != 2605){ ?>
                             <?php if(407==$post->ID):?>
                                 <p class="footer_address">
                                     <span class="label">Address:</span>
-                                    St Petersburg, Fuchika st, 4K, 611
+                                    office 611, 4K, Fuchika st, St Petersburg, Russia, 192102 
                                 </p>
                             <?php else:?>
                                 <p class="footer_address">
@@ -70,13 +70,24 @@ if($id != 2605){ ?>
                                     <?php the_field('address','options')?>
                                 </p>
                             <?php endif;?>
-                            
+                        </div>
+                        <div class="dtc vab footer_social">
+                            <p class="footer_vk">
+                                <?php if(407==$post->ID):?>
+                                    <span class="label">Connect with us:</span>
+                                <?php ;else: ?>
+                                    <span class="label">Присоединяйся к нам в соцсетях:</span>
+                                <?php ;endif; ?>
+                                    <a href="https://vk.com/metroproekttunnel">
+                                        <img class="vk_logo" src="<?php echo get_template_directory_uri().'/img/vk-logo-white.png';?>">
+                                    </a>
+                            </p>                            
                         </div>
                     </div><!--/.dt-->
                 </div><!--/.center_wrap-->
             </div><!--/.footer_content-->
         </footer><!--/#footer-->
-        
+<?php } ?>        
         <?php if($id != 12):?>
         <div class="to_top">
             <span>наверх</span>
@@ -84,7 +95,7 @@ if($id != 2605){ ?>
         <?php ; endif; ?>
 
 
-<?php } ?>
+
 
 
 <!-- Ресурсы страницы-->
@@ -99,43 +110,29 @@ if($id != 2605){ ?>
         <?php wp_footer();?>
         <script src="<?php bloginfo('template_url')?>/js/mask.js"></script>
         <script src="<?php bloginfo('template_url')?>/js/main_new.js"></script>
-        <?php if ($id == 12){ ?>
-        <script src="/wp-content/angapp/js/angular.js"></script>
-        <script src="/wp-content/angapp/js/app.js" type="text/javascript"></script>
-        <?php }elseif($id == 2605){?>
-        <script src="/wp-content/angapp/js/angular.js"></script>
-        <script src="/wp-content/angapp/js/app_print.js" type="text/javascript"></script>
-        <?php } ?>
+
+        <script>
+        function enableSubscrBtn(){
+            document.querySelector('#vypiskaReq').disabled = false;
+        };          
+        </script>
+
+        <!--script src="/wp-content/angapp/js/angular.js"></script>
+        <script src="/wp-content/angapp/js/app.js" type="text/javascript"></script> -->
+
+    <?php //if ($id == 12){ ?>
+    <!--    <script src="/wp-content/AppReestrOPS/js/main/polyfills.ang4.js"></script>
+        <script src="/wp-content/AppReestrOPS/js/main/main.ang4.js"></script>
+        <script src="/wp-content/AppReestrOPS/js/main/runtime.ang4.js"></script>
+    <?php// }else if ($id == 2605){ ?>
+        <script src="/wp-content/AppReestrOPS/js/print/polyfills.ang4.print.js"></script>
+        <script src="/wp-content/AppReestrOPS/js/print/main.ang4.print.js"></script>
+        <script src="/wp-content/AppReestrOPS/js/print/runtime.ang4.print.js"></script>
+    <?php //} ?>
+    -->
     <!--    <script src="<?php// bloginfo('template_url')?>/js/reestr.js"></script>  -->
 
-        
         <!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-    (function (d, w, c) {
-        (w[c] = w[c] || []).push(function() {
-            try {
-                w.yaCounter47322423 = new Ya.Metrika({
-                    id:47322423,
-                    clickmap:true,
-                    trackLinks:true,
-                    accurateTrackBounce:true,
-                    webvisor:true
-                });
-            } catch(e) { }
-        });
-
-        var n = d.getElementsByTagName("script")[0],
-            s = d.createElement("script"),
-            f = function () { n.parentNode.insertBefore(s, n); };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = "https://mc.yandex.ru/metrika/watch.js";
-
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else { f(); }
-    })(document, window, "yandex_metrika_callbacks");
-</script>
 <noscript><div><img src="https://mc.yandex.ru/watch/47322423" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
     </body>

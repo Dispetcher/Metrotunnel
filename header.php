@@ -16,9 +16,9 @@
             <?php if(get_field('seo_title', 'category_'.$cat)):?>
                 <title><?php the_field('seo_title', 'category_'.$cat);?></title>
             <?php elseif(get_field('seo_h1', 'category_'.$cat)):?>
-                <title><?php the_field('seo_h1', 'category_'.$cat)?> | СРО А Объединение подземных строителей</title>
+                <title><?php the_field('seo_h1', 'category_'.$cat)?> | СРО А Подземдорстрой</title>
             <?php else:?>
-                <title><?php single_cat_title();?> | СРО А Объединение подземных строителей</title>
+                <title><?php single_cat_title();?> | СРО А Подземдорстрой</title>
             <?php endif;?>
             <?php if(get_field('seo_description', 'category_'.$cat)):?>
                 <meta name="description" content="<?php the_field('seo_description', 'category_'.$cat)?>">
@@ -58,11 +58,19 @@
                 <meta name="keywords" content="<?php wp_title('');?>">
             <?php endif;?>
         <?php endif;?>
+        <!-- Google Captcha -->
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+        
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="<?php bloginfo('template_url')?>/css/normalize.min.css">
         <link rel="stylesheet" href="<?php bloginfo('template_url')?>/css/main_new.css">
-        <?php if($id == 12 | $id == 2605):?><link rel="stylesheet" href="/wp-content/angapp/css/app.css"><?php endif; ?>
-        <!--<script src="<?php bloginfo('template_url')?>/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>-->
+        <!-- Angular JS css <link rel="stylesheet" href="/wp-content/angapp/css/app.css">  -->
+        
+        <!-- Angular 4 css -->
+        <?php// if($id == 12 || $id == 2605):?><!--<link rel="stylesheet" href="/wp-content/AppReestrOPS/css/main/styles.ang4.css">--><?php// endif; ?>
+                
+        <!--<script src="<?php //bloginfo('template_url')?>/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>-->
+
         <?php wp_head();?>
     </head>
     <?php
@@ -70,10 +78,8 @@
         if(!is_front_page()) $dop_classes = 'inner_page';
     ?>
     <body <?php body_class($dop_classes)?>>
-        
-        
-<?php if($id != 2605){ ?>
-        
+    
+<?php if($id != 2605 ){ ?>
         
         <!--[if lt IE 8]>
             <p class="browserupgrade">Вы используете <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите браузер</a> для полноценной работы сайта.</p>

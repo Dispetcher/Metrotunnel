@@ -1,4 +1,4 @@
-/*@Dispetcher last mod 13.12.18 */
+/*@Dispetcher last mod 25.12.18 */
 (function ($) {
     $(document).ready(function () {
         //MaskedInput
@@ -44,6 +44,7 @@
 			$(document).on("click", "#vypiska_button", function(e){
 				$('.background_vypiska').fadeIn(300);
                 $('.vypiska_order_form_holder').stop(true,false).fadeToggle(300);
+				$('#vypiskaReq').attr('disabled', 'disabled');
 				getOrgList();
 				
             });
@@ -75,7 +76,7 @@
 			});
 		//Validate vypiska form
 		 $(document).on("click", "#vypiskaReq", function(e){
-			if($('#companyName').val() == "Наименование организации"){
+			if($('#companyName').val() == "Наименование организации" || $('#companyName').val() == ""){
 				e.preventDefault();
 				e.stopPropagation();
 				$('#companyName').css("color", "red");
@@ -89,12 +90,14 @@
 			$(".sotrName span").fadeOut(200);
 			$(".sotrDol span").fadeOut(200);
 			$(".sotrEmail span").fadeOut(200);
+			$('#vypiskaReq').removeAttr('disabled');
 		});
 		//Get companies list
 		function getOrgList(){
-			$.post('https://www.metrotunnel.ru/wp-content/complist/orglist.php', 
+			let hp = window.location.href;
+			$.post(hp+'/wp-content/complist/orglist.php', 
 				{
-					"method":"get"
+					"method":"metro"
 				},
 				function(data, status){
 					if(status == 'success'){
