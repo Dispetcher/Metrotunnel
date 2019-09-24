@@ -1,4 +1,4 @@
-/*@Dispetcher last mod 25.12.18 */
+/*** Dmitry Skoblikov / @Dispetcher, last modification at 24.09.19 ***/
 (function ($) {
     $(document).ready(function () {
         //MaskedInput
@@ -103,8 +103,9 @@
 					if(status == 'success'){
 						var arr = JSON.parse(data);
 						if (arr){
-							arr.forEach(function(item){
-								$('#companyName').append(`<option value="${item.MEMBERNAME}">${item.MEMBERNAME}</option>`)
+							arr.forEach(function(item){								
+								//$('#companyName').append(`<option value="${item.MEMBERNAME}">${item.MEMBERNAME}</option>`)
+								$('#companyName').append('<option value="'+item.MEMBERNAME+'">'+item.MEMBERNAME+'</option>')
 							});
 						}else{
 							console.log("couldn't retrieve data");
@@ -361,8 +362,15 @@
 				});
             });	
 		//Cats accordeon
-			$(document).on("click", '.cat_block_link', function(e){
-				e.preventDefault();
+			$(document).on("click", '.cat_block_link', function(event){
+				
+				var event = document.createEvent('CustomEvent');
+				event.initCustomEvent('custom', true, true, {});
+				event.preventDefault = function () {
+  				  Object.defineProperty(this, "defaultPrevented", {get: function () {return true;}});
+				};
+				event.preventDefault();
+				event.defaultPrevented;
 				$(this).toggleClass('opened');
 				var parent_block = $(this).parent('.cat_block');
 				$('.cat_block_content', parent_block).stop(true,false).slideToggle(500);
